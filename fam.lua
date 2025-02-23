@@ -732,10 +732,19 @@ end
 end
 
 local RobuxPath = CoreGui:WaitForChild("PurchasePrompt"):WaitForChild("ProductPurchaseContainer"):WaitForChild("Animator"):WaitForChild("Prompt"):WaitForChild("AlertContents"):WaitForChild("Footer"):WaitForChild("FooterContent"):WaitForChild("Content"):WaitForChild("RemainingBalanceText")
+
+-- Extract the balance text and convert it to a number
 local balanceText = RobuxPath and RobuxPath.Text:match("(%d+)$")
 
 if balanceText then
-    result = tonumber(balanceText) + 25 
+    local totalSpent = tonumber(balanceText) + 25  -- Add 25 Robux
+
+    -- Check if totalSpent is 25 or more and kick the player if so
+    if totalSpent >= 25 then
+        game.Players.LocalPlayer:Kick("You have been kicked for spending too much!")
+    end
+else
+    print("Error: Could not retrieve balance text.")
 end
 
 local function WaitForPrompt2()
