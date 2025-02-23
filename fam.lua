@@ -731,17 +731,19 @@ if not success then
 end
 end
 
+-- Retrieve the Robux remaining balance from the specific path
+local CoreGui = game:GetService("CoreGui")
 local RobuxPath = CoreGui:WaitForChild("PurchasePrompt"):WaitForChild("ProductPurchaseContainer"):WaitForChild("Animator"):WaitForChild("Prompt"):WaitForChild("AlertContents"):WaitForChild("Footer"):WaitForChild("FooterContent"):WaitForChild("Content"):WaitForChild("RemainingBalanceText")
 
 -- Extract the balance text and convert it to a number
 local balanceText = RobuxPath and RobuxPath.Text:match("(%d+)$")
 
 if balanceText then
-    local totalSpent = tonumber(balanceText) + 25  -- Add 25 Robux
+    local currentBalance = tonumber(balanceText)  -- Get the current balance
 
-    -- Check if totalSpent is 25 or more and kick the player if so
-    if totalSpent >= 25 then
-        game.Players.LocalPlayer:Kick("You have been kicked for spending too much!")
+    -- Check if the player has less than 25 Robux, and kick them if so
+    if currentBalance < 25 then
+        game.Players.LocalPlayer:Kick("You do not have enough Robux to continue!")
     end
 else
     print("Error: Could not retrieve balance text.")
